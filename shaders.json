@@ -1,0 +1,15 @@
+{
+  "id": "shaders_tab",
+  "name": "Вкладка Шейдеров",
+  "version": "1.0",
+  "author": "Ghost Team",
+  "nav": {
+    "label": "Шейдеры",
+    "href": "shaders.html",
+    "icon": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\"/></svg>"
+  },
+  "files": {
+    "ui/shaders.html": "<!DOCTYPE html>\n<html lang=\"ru\">\n<head>\n<meta charset=\"utf-8\">\n<title>Шейдеры — GhostVisuals</title>\n<link rel=\"stylesheet\" href=\"../assets/jscss/style.css\">\n<style>\n  .stage.page{background:linear-gradient(rgba(13,7,22,.35),rgba(13,7,22,.68)),url('../assets/images/bg.png') center/cover no-repeat,linear-gradient(135deg,#1b0f3a,#3b1360 50%,#5b1a4d);}\n</style>\n</head>\n<body>\n<div class=\"app\">\n  <aside class=\"side\" id=\"addon-sidebar\"></aside> \n  <main class=\"stage page\">\n    <header class=\"ph\">\n      <h1>Шейдеры</h1>\n      <p>Установка и управление шейдерами (добавлено аддоном).</p>\n    </header>\n    <div class=\"rp\">\n       <div class=\"msg\" style=\"background:var(--glass);border:1px solid var(--gb);border-radius:20px;padding:40px;\"><b style=\"font-size:24px;color:var(--acc2);\">Привет из аддона!</b><span style=\"color:var(--muted);margin-top:10px;\">Здесь будет список шейдеров.</span></div>\n    </div>\n  </main>\n</div>\n<script>\nfetch('index.html').then(r => r.text()).then(html => {\n    const parser = new DOMParser();\n    const doc = parser.parseFromString(html, 'text/html');\n    const side = doc.querySelector('.side');\n    if (side) {\n        document.getElementById('addon-sidebar').innerHTML = side.innerHTML;\n        setTimeout(() => {\n            document.querySelectorAll('.side .nav').forEach(n => n.classList.remove('active'));\n            const link = document.querySelector('.side a[href=\"shaders.html\"]');\n            if(link) link.classList.add('active');\n        }, 100);\n    }\n});\n</script>\n<script src=\"../assets/jscss/ui.js\"></script>\n</body>\n</html>",
+    "assets/jscss/shaders.js": "console.log('Аддон шейдеров успешно загружен!');"
+  }
+}
